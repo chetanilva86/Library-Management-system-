@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books — College Library</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">📚 College Library</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="books.html" class="active">Books</a>
+      <a href="dashboard.html">Dashboard</a>
+      <span class="nav-user" id="navUser"></span>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <h1>Library Books</h1>
+        <p>Browse and issue books from our collection</p>
+      </div>
+      <div class="search-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search by title, author, category...">
+        </div>
+        <button onclick="searchBooks()" class="btn btn-gold">Search</button>
+        <button onclick="loadBooks()" class="btn btn-ghost">Reset</button>
+      </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" style="display:none" class="admin-panel">
+      <div class="admin-panel-header">
+        <span>⚙️</span>
+        <h3>Admin — Add New Book</h3>
+      </div>
+      <form id="addBookForm">
+        <div class="add-book-grid">
+          <input type="text"   id="bookTitle"    placeholder="Book Title *" required>
+          <input type="text"   id="bookAuthor"   placeholder="Author Name *" required>
+          <input type="text"   id="bookISBN"     placeholder="ISBN (optional)">
+          <input type="text"   id="bookCategory" placeholder="Category * e.g. Science, Math" required>
+          <input type="number" id="bookCopies"   placeholder="Total Copies" value="1" min="1">
+          <textarea            id="bookDesc"     placeholder="Book description (optional)"></textarea>
+          <button type="submit" class="btn btn-gold" id="addBookBtn">+ Add Book</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Books Grid -->
+    <div id="booksGrid" class="books-grid">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading books...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 College Library — Built with <span>♥</span> for Students</p>
+  </footer>
+
+  <script src="js/books.js"></script>
+</body>
+</html>

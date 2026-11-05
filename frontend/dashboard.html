@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — College Library</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">📚 College Library</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <span class="nav-user" id="navUser"></span>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Welcome Banner -->
+    <div class="dashboard-welcome">
+      <div class="welcome-text">
+        <h1>Hello, <span id="userName" style="color:var(--gold)">User</span> 👋</h1>
+        <p id="welcomeSub">Here's an overview of the library.</p>
+      </div>
+      <span id="rolePill" class="role-pill"></span>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <h3 id="totalBooksCount">0</h3>
+        <p>Total Books</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <h3 id="availableCount">0</h3>
+        <p>Available</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📤</div>
+        <h3 id="issuedCount">0</h3>
+        <p>Issued Out</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" id="myCountIcon">📋</div>
+        <h3 id="myCount">0</h3>
+        <p id="myCountLabel">My Books</p>
+      </div>
+    </div>
+
+    <!-- Student: My Issued Books -->
+    <div id="myBooksSection" class="section-card">
+      <div class="section-card-header">
+        <h2>📋 My Issued Books</h2>
+        <a href="books.html" class="btn btn-outline" style="padding:6px 14px; font-size:0.82rem">Browse Books →</a>
+      </div>
+      <div id="myBooksList">
+        <div class="loading"><div class="loading-spinner"></div></div>
+      </div>
+    </div>
+
+    <!-- Admin: All Users -->
+    <div id="usersSection" style="display:none" class="section-card">
+      <div class="section-card-header">
+        <h2>👥 Registered Users</h2>
+        <span id="userCount" style="color:var(--text-muted); font-size:0.85rem"></span>
+      </div>
+      <div class="users-table-wrap">
+        <div id="usersList">
+          <div class="loading"><div class="loading-spinner"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 College Library — Built with <span>♥</span> for Students</p>
+  </footer>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

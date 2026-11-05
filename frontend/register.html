@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — College Library</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-wrapper">
+    <div class="auth-logo">📚 College Library</div>
+
+    <div class="auth-card">
+      <h2>Create Account</h2>
+      <p class="subtitle">Join the library and start exploring books.</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="name" placeholder="Your full name" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label>Password (min 6 characters)</label>
+          <input type="password" id="password" placeholder="Create a strong password" required minlength="6">
+        </div>
+
+        <div class="form-group">
+          <label>Select Role</label>
+          <select id="role">
+            <option value="student">🎓 Student</option>
+            <option value="admin">👑 Admin</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-full" id="submitBtn">
+          Create Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="auth-footer">
+        <a href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

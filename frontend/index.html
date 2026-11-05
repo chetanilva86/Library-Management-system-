@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Library — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">📚 College Library</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="books.html">Books</a>
+      <a href="login.html" id="loginBtn">Login</a>
+      <a href="register.html" id="registerBtn">Register</a>
+      <a href="dashboard.html" id="dashBtn" style="display:none">Dashboard</a>
+      <span class="nav-user" id="navUser" style="display:none"></span>
+      <a href="#" id="logoutBtn" style="display:none" onclick="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">✦ Welcome to the Digital Library</div>
+    <h1>Your Knowledge Hub<br><span>Starts Here</span></h1>
+    <p>Browse thousands of books, issue them instantly, and manage your reading journey — all in one place.</p>
+    <div class="hero-buttons">
+      <a href="register.html" class="btn btn-gold">Get Started Free</a>
+      <a href="books.html" class="btn btn-outline">Browse Books</a>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <h3 id="totalBooksCount">—</h3>
+      <p>Books Available</p>
+    </div>
+    <div class="stat-item">
+      <h3>2</h3>
+      <p>User Roles</p>
+    </div>
+    <div class="stat-item">
+      <h3>14</h3>
+      <p>Days Issue Period</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>Online Access</p>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features">
+    <h2 class="section-title">Everything You Need</h2>
+    <p class="section-subtitle">A complete library management experience for students and administrators.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Smart Search</h3>
+        <p>Find any book by title, author, or category in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <h3>Instant Issue</h3>
+        <p>Issue books online — no queues, no paperwork.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📥</div>
+        <h3>Easy Returns</h3>
+        <p>Return books with a single click from your dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>Admin Control</h3>
+        <p>Admins can manage books and monitor all users easily.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Due Date Tracking</h3>
+        <p>Never miss a return date with clear due date reminders.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure Auth</h3>
+        <p>JWT-based authentication keeps your account safe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 College Library — Built with <span>♥</span> for Students</p>
+  </footer>
+
+  <script>
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    const user  = JSON.parse(localStorage.getItem('user') || 'null');
+
+    if (token && user) {
+      document.getElementById('loginBtn').style.display    = 'none';
+      document.getElementById('registerBtn').style.display = 'none';
+      document.getElementById('dashBtn').style.display     = 'block';
+      document.getElementById('logoutBtn').style.display   = 'block';
+      document.getElementById('navUser').style.display     = 'block';
+      document.getElementById('navUser').textContent       = user.name;
+    }
+
+    // Fetch book count for stats
+    if (token) {
+      fetch('http://localhost:5000/api/books', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.count !== undefined) {
+          document.getElementById('totalBooksCount').textContent = data.count;
+        }
+      })
+      .catch(() => {});
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

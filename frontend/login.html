@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — College Library</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-wrapper">
+    <div class="auth-logo">📚 College Library</div>
+
+    <div class="auth-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Sign in to access your library account.</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-full" id="submitBtn">
+          Sign In
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Create one</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="auth-footer">
+        <a href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
